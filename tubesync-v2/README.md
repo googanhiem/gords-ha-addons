@@ -1,3 +1,5 @@
+*****!!!This doesn't work yet!!!*****
+
 # Home Assistant Add-on: Tubesync v2
 
 _Example add-on to use as a blueprint for new add-ons._
