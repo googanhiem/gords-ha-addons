@@ -1,0 +1,18 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: tubesync-v2
+version: "1.0.0"
+slug: tubesync
+description: youtube pvr
+url: "https://github.com/googanhiem/gords-ha-addons/tree/main/tubesync-v2"
+arch:
+  - aarch64
+  - amd64
+init: false
+map:
+  - share:rw
+ports: 
+  4849/tcp: 4849
+options:
+schema:
+  message: "str?"
+image: "ghcr.io/meeb/tubesync"
