@@ -11,8 +11,8 @@
   "map": [
     "share:rw"
   ],
-  "image": "meeb/tubesync",
-  "version": "2023-01-20",
+  "image": "ghcr.io/meeb/tubesync:latest",
+  "init": "false",
   "name": "tubesync",
   "options": {},
   "ports": {
