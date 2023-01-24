@@ -11,14 +11,14 @@ This repository contains the following add-ons
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
 
-_Youtube PVR._
+_Youtube PVR - based on a jdeath addon - not working._
 
 ### [tubesync v2 add-on](./tubesync-v2)
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
 
-_Youtube PVR v2._
+_Youtube PVR v2 - copying the example addon - not working._
 
 <!--
 
