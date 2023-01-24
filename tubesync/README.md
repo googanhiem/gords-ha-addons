@@ -1,4 +1,4 @@
-*****This doesn't work yet******
+*****This doesn't work yet*****
 
 # Home assistant add-on: TubeSync
 
