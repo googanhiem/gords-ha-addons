@@ -12,7 +12,6 @@ map:
   - share:rw
 ports: 
   4849/tcp: 4849
-options:
 schema:
   message: "str?"
 image: "ghcr.io/meeb/tubesync"
