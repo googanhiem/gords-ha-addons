@@ -1,3 +1,5 @@
+*****This doesn't work yet******
+
 # Home assistant add-on: TubeSync
 
 Youtube PVR
