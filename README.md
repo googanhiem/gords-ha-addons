@@ -13,6 +13,13 @@ This repository contains the following add-ons
 
 _Youtube PVR._
 
+### [tubesync v2 add-on](./tubesync-v2)
+
+![Supports aarch64 Architecture][aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
+
+_Youtube PVR v2._
+
 <!--
 
 Notes to developers after forking or using the github template feature:
