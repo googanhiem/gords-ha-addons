@@ -1,4 +1,4 @@
 # https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
-name: Gords Home Assistant add-on repository
+name: Gords Home Assistant add-on repo
 url: 'https://github.com/googanhiem/gords-ha-addons'
 maintainer: Gord
