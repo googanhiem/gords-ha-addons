@@ -11,7 +11,7 @@
   "map": [
     "share:rw"
   ],
-  "image": "ghcr.io/meeb/tubesync:latest",
+  "image": "ghcr.io/meeb/tubesync",
   "init": "false",
   "name": "tubesync",
   "options": {},
