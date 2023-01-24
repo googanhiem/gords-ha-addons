@@ -24,7 +24,7 @@
   "schema": {},
   "slug": "tubesync",
   "startup": "services",
-  "upstream": "2023-01-21",
+  "upstream": "2023-01-20",
   "url": "https://github.com/googanhiem/gords-ha-addons",
   "webui": "[PROTO:ssl]://[HOST]:[PORT:4848]"
 }
