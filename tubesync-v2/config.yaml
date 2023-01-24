@@ -11,6 +11,6 @@ init: true
 map:
   - share:rw
 ports: 
-  4849/tcp: 4849
+  4848/tcp: 4849
 schema:
   message: "str?"
