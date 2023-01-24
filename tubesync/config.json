@@ -1,0 +1,30 @@
+{
+  "arch": [
+    "amd64",
+    "aarch64"
+  ],
+  "boot": "auto",
+  "description": "Youtube PVR",
+  "environment": {
+    "DOWNLOAD_DIR": "/share/tubesync/"
+  },
+  "map": [
+    "share:rw"
+  ],
+  "image": "meeb/tubesync",
+  "version": "2023-01-20",
+  "name": "tubesync",
+  "options": {},
+  "ports": {
+    "4848/tcp": "4848"
+  },
+  "ports_description": {
+    "4848/tcp": "Web interface"
+  },
+  "schema": {},
+  "slug": "tubesync",
+  "startup": "services",
+  "upstream": "2023-01-20",
+  "url": "https://github.com/googanhiem/gords-ha-addons",
+  "webui": "[PROTO:ssl]://[HOST]:[PORT:4848]"
+}
