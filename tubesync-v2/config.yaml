@@ -14,4 +14,4 @@ ports:
   4849/tcp: 4849
 schema:
   message: "str?"
-image: "ghcr.io/meeb/tubesync"
+image: "ghcr.io/googanhiem/{arch}-tubesync-v2"
