@@ -20,6 +20,11 @@ _Youtube PVR - based on a jdeath addon - not working._
 
 _Youtube PVR v2 - copying the example addon - not working._
 
+### [tubesync v3 add-on](./tubesync-v3)
+
+![Supports aarch64 Architecture][aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
+
 <!--
 
 Notes to developers after forking or using the github template feature:
