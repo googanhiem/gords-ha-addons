@@ -10,7 +10,7 @@
     "config:rw"
     "downloads:rw"
   ],
-  "name": "tubesync",
+  "name": "tubesync-v3",
   "options": {},
   "ports": {
     "4848/tcp": "4848"
