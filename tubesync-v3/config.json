@@ -7,7 +7,7 @@
   "description": "TubeSync is a PVR (personal video recorder) for YouTube",
   "environment": {},
   "map": [
-    "config:rw"
+    "config:rw",
     "downloads:rw"
   ],
   "name": "tubesync-v3",
