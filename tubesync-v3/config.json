@@ -8,7 +8,7 @@
   "environment": {},
   "map": [
     "config:rw",
-    "downloads:rw"
+    "share:rw"
   ],
   "name": "tubesync-v3",
   "options": {},
