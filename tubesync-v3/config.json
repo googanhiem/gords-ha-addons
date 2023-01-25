@@ -19,10 +19,10 @@
     "4848/tcp": "WebUI"
   },
   "schema": {},
-  "slug": "tubesync",
+  "slug": "tubesync-v3",
   "startup": "services",
   "upstream": "1.0",
-  "url": "https://github.com/jdeath/homeassistant-addons/tree/main/tubesync",
+  "url": "https://github.com/googanhiem/gords-ha-addons/edit/main/tubesync-v3",
   "version": "v0.12.0",
   "webui": "[PROTO:ssl]://[HOST]:[PORT:4848]",
   "init": false,
