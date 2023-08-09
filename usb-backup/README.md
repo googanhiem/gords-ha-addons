@@ -21,5 +21,5 @@ Plug in a usb drive and backup home assistant. This uses rsync and is based on t
 [install-badge]: https://img.shields.io/badge/Install%20on%20my-Home%20Assistant-41BDF5?logo=home-assistant&style=for-the-badge
 [repository-badge]: https://img.shields.io/badge/Add%20repository%20to%20my-Home%20Assistant-41BDF5?logo=home-assistant&style=for-the-badge
 
-[install-url]: https://my.home-assistant.io/redirect/supervisor_addon?addon=243ffc38_usb-backup
+[install-url]: https://my.home-assistant.io/redirect/supervisor_addon?addon=f2011bf5_usb-backup
 [repository-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fgooganhiem%2Fgords-ha-addons
