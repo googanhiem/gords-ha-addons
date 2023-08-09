@@ -11,7 +11,6 @@ Plug in a usb drive and backup home assistant. This uses rsync and is based on t
 
 [![Add repository on my Home Assistant][repository-badge]][repository-url]
 [![Install on my Home Assistant][install-badge]][install-url]
-[![Donate][donation-badge]][donation-url]
 
 [aarch64-badge]: https://img.shields.io/badge/aarch64-yes-green.svg?style=for-the-badge
 [amd64-badge]: https://img.shields.io/badge/amd64-yes-green.svg?style=for-the-badge
