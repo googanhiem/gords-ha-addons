@@ -10,6 +10,9 @@ SNAPSHOT_TIME=$(bashio::config 'snapshot_keep_days')
 if ! bashio::config.has_value 'external_device'; then
   bashio::log.info "Detected devices..."
   ls -h1 /dev/sd*
+  echo "sda" && cat /sys/class/block/sda/device/{model,vendor}
+  echo "sdb" && cat /sys/class/block/sdb/device/{model,vendor}
+  echo "sdc" && cat /sys/class/block/sdc/device/{model,vendor} 
 
   bashio::log.info "Select your device and insert it in the 'external_device' addon option."
   bashio::log.info "For example: \"External_device: /dev/sda1\""
