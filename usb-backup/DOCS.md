@@ -1,5 +1,5 @@
 # About
-This is simplified automatic backup solution using rsync for Home Assistant OS. It can backup all the main Home Assistant folders and mounted network drives. It also has the ability to snapshot overwritten/deleted files for easy recovery.
+This is a simplified automatic backup solution using rsync for Home Assistant OS. It can backup all the main Home Assistant folders and mounted network drives. It also has the ability to snapshot overwritten/deleted files for easy recovery.
 
 ### Thanks
 This is heavily based on the amazing work of Poeschl and his [rsync local](https://github.com/Poeschl/Hassio-Addons/tree/main/rsync-local)
