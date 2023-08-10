@@ -1,5 +1,5 @@
 name: usb-backup
-version: 0.0.1
+version: 0.0.2
 slug: usb-backup
 description: Plug in a usb drive and backup home assistant
 url: https://github.com/Poeschl/Hassio-Addons/tree/main/rsync-local
@@ -17,12 +17,12 @@ host_network: true
 ports: {}
 ports_description: {}
 map:
-  - share:rw
-  - config:rw
-  - backup:rw
-  - addons:rw
-  - ssl:rw
-  - media:rw
+  - share:ro
+  - config:ro
+  - backup:ro
+  - addons:ro
+  - ssl:ro
+  - media:ro
 devices:
   - /dev/sdc1
   - /dev/sdc2
@@ -51,6 +51,7 @@ options:
     - source: /media
     - source: /addons
     - source: /ssl
+    - source: /backup
   external_folder: backup
   external_device: ""
   snapshots: true
