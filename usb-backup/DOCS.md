@@ -8,16 +8,16 @@ This is heavily based on the amazing work of Poeschl and his [rsync local](https
 
 # How-to
 1. Plug in a usb drive large enough to fit your files
-2. Run the addon once without `external device` and note the `/dev/sd**` of the usb drive. Copy this into the `external device` section. (if you have a rpi using an sd card its probably /dev/sda1, if your using x86 its likely /dev/sdb1 - double check!)
+2. Run the addon once without `external device` and note the `/dev/sd**` of the usb drive. Copy this into the `external device` section.
 3. Click start and check logs. Don't `Start at boot` or run with `Watchdog`. By default this backs up all folders available to the addon. Note: if you have network drive mounted to media/share/backup it will be backed-up as well.
 4. Write an automation to trigger it - (see automation example below)
 
 ### Requirements
  - USB drive (or thumb drive) formatted with a linux native filesystem - for best results use EXT3, EXT4 or BTRFS (this addon only has access to the first 3 partitions, so try to use fewer). Other filesystems may work, but could have issues.
- - The drive should be at least 30% larger than your install if you're using snapshots
+ - The drive should be at least ~30% larger than your install if you're using snapshots
  - A Home Assistant device that can power a usb drive*
 
-*if you're using rpi, make sure its with a powered drive or powered usb hub. The some rpi usb ports are a little underpowered - underpowered drives cause write errors (a usb thumb drive uses less energy, so might be a good option if you're not backing up too often).
+*if you're using rpi, make sure its with a powered drive or powered usb hub. Some rpi usb ports are a little underpowered - underpowered drives cause write errors (a usb thumb drive uses less energy, so might be a good option if you're not backing up too often).
 
 ### Restoring backups
 This backs up system folders and doesn't create Home Assistant backup files (used for easy/seamless backups and restores - [more info](https://www.home-assistant.io/common-tasks/os/#backups)), though if those exist they will be transferred to usb if you include the `backups` folder.
@@ -40,7 +40,8 @@ This uses rsync, an advanced file copying tool. Specifically,
 ## Security
 
 In order to mount your external device the integrated AppArmor feature is disabled.
-This addon has access to the devices with the path from the available `external_device` config option.
+This addon has access to the devices with the path from the available `external_device` config option. 
+It has read-only access to hass folders.
 
 ## Config
 
@@ -59,35 +60,40 @@ snapshot_keep_days: 60
 
 ### `folders`
 
-The list of folders you want to sync with the remote machine. If this base folder is empty the addon will skip it (this is designed to prevent unmounted network drives from being deleted).
+The list of folders you want to sync with the remote machine. 
 
 ### `folders` - `source`
 
-The source folder for rsync. (the addon has access to `config, share, media, backup, addons and ssl`)
+The source folder for rsync. (the addon has access to `config, share, media, backup, addons and ssl`) If a source folder is empty the addon will skip it (this is designed to prevent unmounted network drives from being deleted). Do not add a trailing `/`
 
 ### `folders` - `options` (optional)
 
-Use your own options for rsync. This string is replacing the default one and get directly to rsync. The default is `-avuh --delete`.
+You can us your own options for rsync ([more details](https://linux.die.net/man/1/rsync)). Be careful as some options are pretty destructive. If blank the default is `-avuh --delete`.
 
 ### `external_folder`
 
 The base folder on the external usb drive or usb stick for syncing the folders. Sub-folders with the folders from above will be created there.
-This path should not start with `/`.
+This path should not start with `/` nor end with one.
 
 ### `external_device`
 
-If you need to pin down a specific device to make your backup too, here is the option. Per default the device is `/dev/sda1`.
-Make sure to adjust it when for example running Home Assistant from a external drive. The `sda1` will be a partition of the Home Assistant drive.
+Run the addon once with this blank and it'll show you what is plugged in. It will show you all the partitions and details on each drive model.
 
-If no device is specified all available devices will be displayed in the log. No sync takes place without device.
+A bit lost, here are some suggestions, 
+ - Running hass on a raspberry pi with a sd card boot drive and you plug in one usb drive with one partition - it will be `/dev/sda1`
+ - Using a PC/x86 machine with one internal harddrive, your usb drive will most likely be `/dev/sdb1`
+ - If you are using proxmox/unraid/supervised... you know what you're doing. 
 
+No sync takes place with this blank.
+
+Format: `/dev/sd(drive-letter)(partition-number)` Do not add a trailing `/`
 Available options: `/dev/sda1`, `/dev/sda2`, `/dev/sda3`, `/dev/sdb1`, `/dev/sdb2`, `/dev/sdb3`, `/dev/sdc1`, `/dev/sdc2`, `/dev/sdc3`
 
 ### `snapshots`
-Not true snapshots - These allow for files that are deleted or changed during an update to be stored for a set amount of time in dated `snapshot` folder. Think of it like a recycle bin - that also protects against file changes. You can choose how long they are stored by setting the `snapshot_keep_days`. Default is 60 days. Don't use snapshots if you're regularly deleting/changing large amounts of data to make space for other files - as the snapshots will take up space until cleaned.
+Not true snapshots - these allow for files that are deleted or changed during an update to be stored for a set amount of time in dated `snapshot` folder. Think of it like a recycle bin - that also protects against file changes. You can choose how long they are stored by setting the `snapshot_keep_days`. Default is 60 days. Don't use snapshots if you're regularly deleting/changing large amounts of data to make space for other files - as the snapshots will take up space until cleaned.
 
 ## Automation example
-This automation runes usb-backup after creating a restore point (which will be shored in the backups folder - this allows for easy hass backups).
+This automation runs usb-backup after creating a restore point (which will be stored in the hass `backup` folder).
 
 ```
 alias: Run usb-backup every Sunday night
