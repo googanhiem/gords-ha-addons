@@ -63,7 +63,7 @@ The list of folders you want to sync with the remote machine. If this base folde
 
 ### `folders` - `source`
 
-The source folder for rsync. (the addon has access to `config, share, media, backup and ssl`)
+The source folder for rsync. (the addon has access to `config, share, media, backup, addons and ssl`)
 
 ### `folders` - `options` (optional)
 
