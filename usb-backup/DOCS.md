@@ -8,9 +8,9 @@ This is heavily based on the amazing work of Poeschl and his [rsync local](https
 
 # How-to
 1. Plug in a usb drive large enough to fit your files
-2. Run the addon once without `external device` and note the `/dev/sd**` of the usb drive. Copy this into the `external device` section.
+2. Run the addon once with the `external device` empty, check the log and note the `/dev/sd**` of the usb drive you want to use. Copy this into the `external device` section. (typically `/dev/sda1` for rpi, and `/dev/sdb1` for x86 - double check!) 
 3. Click start and check logs. Don't `Start at boot` or run with `Watchdog`. By default this backs up all folders available to the addon. Note: if you have network drive mounted to media/share/backup it will be backed-up as well.
-4. Write an automation to trigger it - (see automation example below)
+4. It only runs if you click start. So write an automation to trigger it automatically/regularly - (see automation example at the bottom of this doc)
 
 ### Requirements
  - USB drive (or thumb drive) formatted with a linux native filesystem - for best results use EXT3, EXT4 or BTRFS (this addon only has access to the first 3 partitions, so try to use fewer). Other filesystems may work, but could have issues.
