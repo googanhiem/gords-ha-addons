@@ -43,6 +43,7 @@ schema:
   external_folder: match(^[^/].+)
   external_device: match(^(/dev/sd[a|b|c][1|2|3])?)
   snapshots: bool
+  snapshot_folder: match(^[^/].+)
   snapshot_keep_days: int
 options:
   folders:
@@ -55,4 +56,5 @@ options:
   external_folder: backup
   external_device: ""
   snapshots: true
+  snapshot_folder: snapshot
   snapshot_keep_days: 60
