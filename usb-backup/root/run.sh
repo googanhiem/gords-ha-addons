@@ -66,8 +66,10 @@ else
   done
 
   # Remove snapshot folders past keep date
-  echo "<== Checking and removing old snapshots (removed will appear below) ==>" && find /external/${SNAPSHOT_FOLDER} -type d -name "????-??-??" -mtime +${SNAPSHOT_TIME}
-  find /external/${SNAPSHOT_FOLDER} -type d -name "????-??-??" -mtime +${SNAPSHOT_TIME} -depth -exec rm -r {} \;
+  if [ "$ENABLE_SNAPS" == "true" ]; then
+    echo "<== Checking and removing old snapshots (removed will appear below) ==>" && find /external/${SNAPSHOT_FOLDER} -type d -name "????-??-??" -mtime +${SNAPSHOT_TIME}
+    find /external/${SNAPSHOT_FOLDER} -type d -name "????-??-??" -mtime +${SNAPSHOT_TIME} -depth -exec rm -r {} \;
+  fi
   
   umount /external
   bashio::log.info "Synced all folders"
