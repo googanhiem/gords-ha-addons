@@ -90,7 +90,7 @@ Format: `/dev/sd(drive-letter)(partition-number)` Do not add a trailing `/`
 Available options: `/dev/sda1`, `/dev/sda2`, `/dev/sda3`, `/dev/sdb1`, `/dev/sdb2`, `/dev/sdb3`, `/dev/sdc1`, `/dev/sdc2`, `/dev/sdc3`
 
 ### `snapshots`
-Not true snapshots - these allow for files that are deleted or changed during an update to be stored for a set amount of time in dated `snapshot` folder. Think of it like a recycle bin - that also protects against file changes. You can choose how long they are stored by setting the `snapshot_keep_days`. Default is 60 days. Don't use snapshots if you're regularly deleting/changing large amounts of data to make space for other files - as the snapshots will take up space until cleaned.
+Not true snapshots - these allow for files that are deleted or changed during an update to be stored for a set amount of time in dated `snapshot` folder (or you can choose another by changing the `snapshot_folder` option, don't add a `/`). Think of it like a recycle bin - that also protects against file changes. You can choose how long they are stored by setting the `snapshot_keep_days`. Default is 60 days. Don't use snapshots if you're regularly deleting/changing large amounts of data to make space for other files - as the snapshots will take up space until cleaned.
 
 ## debugging
 If you're having issues with missing files or errors after transfers you can get rsync to produce verbose logs externally. Just delete your backups folder, change the folders config to the below config.
