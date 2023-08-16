@@ -6,6 +6,7 @@ FOLDERS=$(bashio::addon.config | jq -r ".folders")
 EXTERNAL_FOLDER=$(bashio::config 'external_folder')
 ENABLE_SNAPS=$(bashio::config 'snapshots')
 SNAPSHOT_TIME=$(bashio::config 'snapshot_keep_days')
+SNAPSHOT_FOLDER=$(bashio::config 'snapshot_folder')
 
 if ! bashio::config.has_value 'external_device'; then
   bashio::log.info "Detected partitions..."
@@ -29,7 +30,7 @@ else
   mkdir -p /external
   mount "${EXTERNAL_DEVICE}" /external
   if [ "$ENABLE_SNAPS" == "true" ]; then
-    mkdir -p "/external/snapshot"
+    mkdir -p "/external/${SNAPSHOT_FOLDER}"
   fi
 
   folder_count=$(echo "$FOLDERS" | jq -r '. | length')
@@ -47,13 +48,13 @@ else
       current_date=$(date +'%Y-%m-%d')
       # shellcheck disable=SC2086
       if [ "$ENABLE_SNAPS" == "true" ]; then
-        bashio::log.info "Making snapshot"
-        mkdir -p "/external/snapshot/${current_date}"
+        bashio::log.info "Making snapshot in ${SNAPSHOT_FOLDER}/${current_date}"
+        mkdir -p "/external/${SNAPSHOT_FOLDER}/${current_date}"
       fi
       
       # Modify rsync command based on enable_snaps option
       if [ "$ENABLE_SNAPS" == "true" ]; then
-        rsync_options="${options} --backup --backup-dir=/external/snapshot/${current_date}"
+        rsync_options="${options} --backup --backup-dir=/external/${SNAPSHOT_FOLDER}/${current_date}"
       else
         rsync_options="${options}"
       fi
@@ -61,12 +62,13 @@ else
       rsync ${rsync_options} "$local" "/external/${EXTERNAL_FOLDER}"
       set +x
 
-      # Remove snapshot folders older than 2 months
-      find /external/snapshot -type d -name "????-??-??" -mtime +${SNAPSHOT_TIME} -exec rm -r {} \;
     fi
   done
 
-
+  # Remove snapshot folders past keep date
+  echo "<== Checking and removing old snapshots (removed will appear below) ==>" && find /external/${SNAPSHOT_FOLDER} -type d -name "????-??-??" -mtime +${SNAPSHOT_TIME}
+  find /external/${SNAPSHOT_FOLDER} -type d -name "????-??-??" -mtime +${SNAPSHOT_TIME} -depth -exec rm -r {} \;
+  
   umount /external
   bashio::log.info "Synced all folders"
 fi
