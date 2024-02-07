@@ -116,7 +116,7 @@ As mentioned previously your external drive needs to use a linux native filesyst
 ***Warning: Always triple check you are formatting the correct drive letter. All files on the formatted drive will be destroyed.***
 
 ## Automation example
-This automation runs usb-backup after creating a restore point (which will be stored in the hass `backup` folder). You will need to update the `addon:` in the addon.
+This automation runs usb-backup after creating a restore point (which will be stored in the hass `backup` folder). You will need to update the `addon:` in the automation.
 
 ```
 alias: Run usb-backup every Sunday night
