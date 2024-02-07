@@ -68,7 +68,7 @@ The source folder for rsync. (the addon has access to `config, share, media, bac
 
 ### `folders` - `options` (optional)
 
-You can us your own options for rsync ([more details](https://linux.die.net/man/1/rsync)). Be careful as some options are pretty destructive. If blank the default is `-avuh --delete`.
+You can use your own options for rsync ([more details](https://linux.die.net/man/1/rsync)). Be careful as some options are pretty destructive. If blank the default is `-avuh --delete`.
 
 ### `external_folder`
 
@@ -93,7 +93,7 @@ Available options: `/dev/sda1`, `/dev/sda2`, `/dev/sda3`, `/dev/sdb1`, `/dev/sdb
 Not true snapshots - these allow for files that are deleted or changed during an update to be stored for a set amount of time in dated `snapshot` folder (or you can choose another by changing the `snapshot_folder` option, don't add a `/`). Think of it like a recycle bin - that also protects against file changes. You can choose how long they are stored by setting the `snapshot_keep_days`. Default is 60 days. Don't use snapshots if you're regularly deleting/changing large amounts of data to make space for other files - as the snapshots will take up space until cleaned.
 
 ## debugging
-If you're having issues with missing files or errors after transfers you can get rsync to produce verbose logs externally. Just delete your backups folder, change the folders config to the below config.
+If you're having issues with missing files or errors after transfers you can get rsync to produce verbose logs externally. Try to start with a fresh drive (ie. delete any folders made by this addon), change the folders config to the below config.
 ```
 - source: /config
   options: "-avuh --delete --log-file=/external/backup/config-rsync.log"
@@ -108,9 +108,15 @@ If you're having issues with missing files or errors after transfers you can get
 - source: /media/
   options: "-avuh --delete --log-file=/external/backup/media-rsync.log"
 ```
+## Formatting your external drive
+As mentioned previously your external drive needs to use a linux native filesystem (EXT4 is best, but EXT3 or BTRFS should also work). Keep it simple and start fresh - backup any files on the drive, delete all existing partitions and only add one primary partition.
+ - Windows: Cannot natively do this. You will need an external program like [DiskGenius](https://www.diskgenius.com/how-to/format-ext4-windows.php) or [AOMEI](https://www.diskpart.com/windows-10/ext4-partition-windows.html)
+ - Linux: [Can be done natively](https://phoenixnap.com/kb/linux-format-disk). My preference is [gparted](https://gparted.org/).
+
+***Warning: Always triple check you are formatting the correct drive letter. All files on the formatted drive will be destroyed.***
 
 ## Automation example
-This automation runs usb-backup after creating a restore point (which will be stored in the hass `backup` folder).
+This automation runs usb-backup after creating a restore point (which will be stored in the hass `backup` folder). You will need to update the `addon:` in the addon.
 
 ```
 alias: Run usb-backup every Sunday night
