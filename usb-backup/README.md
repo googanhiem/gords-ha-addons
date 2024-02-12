@@ -26,7 +26,7 @@ Plug in a usb drive and backup home assistant. This uses rsync and is based on t
 
 # How-to
 1. Plug in a usb drive large enough to fit your files
-2. Run the addon once with the `external device` empty, check the log and note the `/dev/sd**` of the usb drive you want to use. Copy this into the `external device` section. (typically `/dev/sda1` for rpi, and `/dev/sdb1` for x86 - double check!) 
+2. Run the addon once with the `external device` config setting empty, check the log and note the `/dev/sd**` of the usb drive you want to use. Copy this into the `external device` section. (typically `/dev/sda1` for rpi, and `/dev/sdb1` for x86 - double check!) 
 3. Click start and check logs. Don't `Start at boot` or run with `Watchdog`. By default this backs up all folders available to the addon. Note: if you have network drive mounted to media/share/backup it will be backed-up as well.
 4. It only runs if you click start. So write an automation to trigger it automatically/regularly - (see automation example at the bottom of this [doc](https://github.com/googanhiem/gords-ha-addons/blob/main/usb-backup/DOCS.md))
 
