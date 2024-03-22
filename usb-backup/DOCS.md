@@ -20,9 +20,9 @@ This is heavily based on the amazing work of Poeschl and his [rsync local](https
 *if you're using rpi, make sure its with a powered drive or powered usb hub. Some rpi usb ports are a little underpowered - underpowered drives cause write errors (a usb thumb drive uses less energy, so might be a good option if you're not backing up too often).
 
 ### Restoring backups
-This backs up system folders and doesn't create Home Assistant backup files (used for easy/seamless backups and restores - [more info](https://www.home-assistant.io/common-tasks/os/#backups)), though if those exist they will be transferred to usb if you include the `backups` folder.
+Home Assistant already has a function that provides robust backups, that allows for seamless system restores - [learn more about this essential tool here](https://www.home-assistant.io/common-tasks/os/#backups). The issue is those backups are stored by default on the system drive, and if the drive fails you lose your system and the backups. This addon copies those backups to a usb drive by default, thus protecting them from a drive failure. The automation at the end of this doc makes a system backup before copying the files to a usb drive (stored in the `/backup/backup`). 
 
-Using this with the [Sabeechen's Google Drive Backup](https://github.com/sabeechen/hassio-google-drive-backup) is a great start to a [3-2-1 backup solution](https://www.techtarget.com/searchdatabackup/definition/3-2-1-Backup-Strategy).
+Pairing this addon with the [Sabeechen's Google Drive Backup](https://github.com/sabeechen/hassio-google-drive-backup) is a great start to a [3-2-1 backup solution](https://www.techtarget.com/searchdatabackup/definition/3-2-1-Backup-Strategy).
 
 ## Tech
 This uses rsync, an advanced file copying tool. Specifically,
